@@ -2,11 +2,11 @@
 
 import {combineReducers} from 'redux'
 import {networkState} from './NetworkReducer.js'
-import {dashBoardState} from './DashBoardReducer.js'
+import {loginState} from './LoginReducer.js'
 
 const rootReducer = combineReducers({
 networkState,
-dashBoardState,
+loginState,
 });
 
 export default rootReducer;

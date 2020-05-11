@@ -2,7 +2,6 @@
 import NetInfo from "@react-native-community/netinfo";
 
 import * as Actions from "./ActionTypes.js";
-import { invokeUserDataWebservice } from "./LoginActions";
 
 export const checkNetworkConnection = () => {
   return (dispatch) => {
@@ -14,10 +13,6 @@ export const checkNetworkConnection = () => {
         type: Actions.NETWORK_STATUS_CHANGED,
         isNetworkAvailable: state.isConnected,
       });
-
-      if (state.isConnected) {
-        dispatch(invokeUserDataWebservice());
-      }
     });
   };
 };

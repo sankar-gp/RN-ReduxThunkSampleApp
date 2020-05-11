@@ -1,5 +1,5 @@
 "use strict";
-import * as Actions from "../actions/ActionTypes";
+import * as Actions from "../actions/ActionTypes.js";
 
 let initialState = {
   isNetworkAvailable: undefined,

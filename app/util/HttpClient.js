@@ -4,6 +4,7 @@ import store from "../store/Store.js";
 import axios from "axios";
 
 import { STRINGS } from "../util/Constants";
+import * as URLs from "./URLs";
 
 export const invokeGetWebService = (url) => {
   return new Promise(function (success, failed) {

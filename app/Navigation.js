@@ -1,17 +1,14 @@
 "use strict";
 import React, { Component } from "react";
-import { View, Text } from "react-native";
+import { View, Text, Alert } from "react-native";
 import { Router, Scene, ActionConst } from "react-native-router-flux";
 
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import LoginScreen from "./containers/LoginScreen";
+import ListViewScreen from "./containers/ListViewScreen";
 
-
-/**
- * Registeres all the components used in the application for navigation
- */
 class RouteNavigator extends Component {
   static propTypes = {
     isNetworkAvailable: PropTypes.bool,
@@ -22,20 +19,7 @@ class RouteNavigator extends Component {
       this.props.isNetworkAvailable !== undefined &&
       !this.props.isNetworkAvailable
     ) {
-      return (
-        <View
-          style={{
-            backgroundColor: "red",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: 7,
-          }}
-        >
-          <Text style={{ color: "white", fontSize: 12 }}>
-            No Internet Connection
-          </Text>
-        </View>
-      );
+      return Alert.alert("No Internet Connection");
     } else {
       return null;
     }
@@ -54,13 +38,19 @@ class RouteNavigator extends Component {
             titleStyle={{ color: "white" }}
           >
             <Scene
-              key={"dashBoard"}
-              title={"LOGINSCREEN"}
+              key={"login"}
+              title={"LOGIN"}
               component={LoginScreen}
               type={ActionConst.RESET}
               initial
             />
-            
+
+            <Scene
+              key={"list"}
+              title={"LIST VIEW"}
+              component={ListViewScreen}
+          
+            />
           </Scene>
         </Router>
 

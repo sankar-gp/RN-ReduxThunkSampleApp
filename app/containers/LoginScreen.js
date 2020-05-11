@@ -5,22 +5,20 @@ import { bindActionCreators } from "redux";
 
 import LoginScreen from "../components/LoginScreen.js";
 import { checkNetworkConnection } from "../actions/NetworkActions";
-import { invokeTaskDataWebservice } from "../actions/LoginActions";
+import { callLoginWebService } from "../actions/LoginActions";
 
 const mapStateToProps = (state, ownProps) => {
   const {
     networkState: {
       isNetworkAvailable,
     },
-    dashBoardState: { showUserLoading, showTaskLoading, showPostLoading },
+    loginState: { showUserLoading, loginData},
   } = state;
 
   return {
     isNetworkAvailable,
     showUserLoading,
-    showTaskLoading,
-    showPostLoading,
-  
+    loginData,
   }
 }
 
@@ -28,7 +26,7 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
     {
       checkNetworkConnection,
-      invokeTaskDataWebservice,
+      callLoginWebService,
     },
     dispatch
   );
