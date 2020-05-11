@@ -8,10 +8,11 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import LoginScreen from "./containers/LoginScreen";
 import ListViewScreen from "./containers/ListViewScreen";
+import { checkNetworkConnection } from "./actions/NetworkActions";
 
 class RouteNavigator extends Component {
   static propTypes = {
-    isNetworkAvailable: PropTypes.bool,
+    checkNetworkConnection: PropTypes.func,
   };
 
   _renderNetWorkAlert() {
@@ -23,6 +24,10 @@ class RouteNavigator extends Component {
     } else {
       return null;
     }
+  }
+
+  componentDidMount(){
+    this.props.checkNetworkConnection();
   }
 
   render() {
@@ -64,7 +69,9 @@ class RouteNavigator extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const {
-    networkState: { isNetworkAvailable },
+    networkState: {
+      isNetworkAvailable,
+    },
   } = state;
 
   return {
@@ -73,7 +80,9 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({}, dispatch);
+  return bindActionCreators({
+    checkNetworkConnection
+  }, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RouteNavigator);

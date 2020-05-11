@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 import LoginScreen from "../components/LoginScreen.js";
-import { checkNetworkConnection } from "../actions/NetworkActions";
+// import { checkNetworkConnection } from "../actions/NetworkActions";
 import { callLoginWebService } from "../actions/LoginActions";
 
 const mapStateToProps = (state, ownProps) => {
@@ -25,7 +25,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
     {
-      checkNetworkConnection,
+      // checkNetworkConnection,
       callLoginWebService,
     },
     dispatch
