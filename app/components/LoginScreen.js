@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import PropTypes from "prop-types";
 import { Actions } from 'react-native-router-flux';
+
 export default class LoginScreen extends Component {
 
   constructor(props) {
@@ -23,7 +24,6 @@ export default class LoginScreen extends Component {
   }
 
   static propTypes = {
-    checkNetworkConnection: PropTypes.func,
     callLoginWebService: PropTypes.func,
 
     showUserLoading: PropTypes.bool,
@@ -35,40 +35,40 @@ export default class LoginScreen extends Component {
   }
 
   _renderNetWorkAlert() {
-    if (
-      this.props.isNetworkAvailable !== undefined &&
-      !this.props.isNetworkAvailable
-    ) {
-      return (
-        <View
-          style={{
-            backgroundColor: "red",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: 7,
-          }}
-        >
-          <Text style={{ color: "white", fontSize: 12 }}>
-            No Internet Connection
-          </Text>
-        </View>
-      );
-    } else {
-      return null;
-    }
+    // if (
+    //   this.props.isNetworkAvailable !== undefined &&
+    //   !this.props.isNetworkAvailable
+    // ) {
+    //   return (
+    //     <View
+    //       style={{
+    //         backgroundColor: "red",
+    //         alignItems: "center",
+    //         justifyContent: "center",
+    //         padding: 7,
+    //       }}
+    //     >
+    //       <Text style={{ color: "white", fontSize: 12 }}>
+    //         No Internet Connection
+    //       </Text>
+    //     </View>
+    //   );
+    // } else {
+    //   return null;
+    // }
   }
 
 
   _loading() {
     if (
-      this.props.showUserLoading !== undefined && !this.props.isNetworkAvailable
+      this.props.showUserLoading !== undefined && !this.props.showUserLoading
     ) {
       return (
-        console.log("WS", "Loading Completed")
+        console.log("WS", "Loading Started")
       );
     } else {
       return (
-        console.log("WS", "Loading Started")
+        <View></View>
       );
     }
   }

@@ -20,7 +20,7 @@ export const callLoginWebService = () => {
           if (val.statusCode == "0" && _.has(val, "data")) {
             dispatch({
               type: Actions.LOGIN_RESPONSE,
-              loginData: val.data,
+              loginData: val.data.cards.toString(),
             });
             dispatch({
               type: Actions.LOADING_COMPLETED,
