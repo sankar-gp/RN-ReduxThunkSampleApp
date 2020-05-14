@@ -25,7 +25,6 @@ export default class LoginScreen extends Component {
 
   static propTypes = {
     callLoginWebService: PropTypes.func,
-
     showUserLoading: PropTypes.bool,
     loginData: PropTypes.string,
   };
@@ -35,27 +34,27 @@ export default class LoginScreen extends Component {
   }
 
   _renderNetWorkAlert() {
-    // if (
-    //   this.props.isNetworkAvailable !== undefined &&
-    //   !this.props.isNetworkAvailable
-    // ) {
-    //   return (
-    //     <View
-    //       style={{
-    //         backgroundColor: "red",
-    //         alignItems: "center",
-    //         justifyContent: "center",
-    //         padding: 7,
-    //       }}
-    //     >
-    //       <Text style={{ color: "white", fontSize: 12 }}>
-    //         No Internet Connection
-    //       </Text>
-    //     </View>
-    //   );
-    // } else {
-    //   return null;
-    // }
+    if (
+      this.props.isNetworkAvailable !== undefined &&
+      !this.props.isNetworkAvailable
+    ) {
+      return (
+        <View
+          style={{
+            backgroundColor: "red",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: 7,
+          }}
+        >
+          <Text style={{ color: "white", fontSize: 12 }}>
+            No Internet Connection
+          </Text>
+        </View>
+      );
+    } else {
+      return null;
+    }
   }
 
 

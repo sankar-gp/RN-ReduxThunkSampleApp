@@ -1,61 +1,36 @@
-import React from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text } from 'react-native';
+"use strict";
 
-const DATA = [
-  {
-    id: '1',
-    title: 'ONE',
-  },
-  {
-    id: '2',
-    title: 'TWO',
-  },
-  {
-    id: '3',
-    title: 'THREE',
-  },{
-    id: '4',
-    title: 'FOUR',
-  },{
-    id: '5',
-    title: 'FIVE',
-  },{
-    id: '6',
-    title: 'SIX',
-  },
-];
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
-function Item({ title }) {
-  return (
-    <View style={styles.item}>
-      <Text style={styles.title}>{title}</Text>
-    </View>
+import ListViewScreen from "../components/ListViewScreen.js";
+import { callListService } from "../actions/ListViewActions";
+
+const mapStateToProps = (state, ownProps) => {
+  const {
+    networkState: {
+      isNetworkAvailable,
+    },
+    listViewState :{
+      showUserLoading,
+      data,
+    }
+  } = state;
+
+  return {
+    isNetworkAvailable,
+    showUserLoading,
+    data,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(
+    {
+      callListService,
+    },
+    dispatch
   );
 }
 
-export default function ListViewScreen() {
-  return (
-    <SafeAreaView style={styles.container}>
-      <FlatList
-        data={DATA}
-        renderItem={({ item }) => <Item title={item.title} />}
-        keyExtractor={item => item.id}
-      />
-    </SafeAreaView>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  item: {
-    backgroundColor: '#f9c2ff',
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
-  },
-  title: {
-    fontSize: 32,
-  },
-});
+export default connect(mapStateToProps, mapDispatchToProps)(ListViewScreen);

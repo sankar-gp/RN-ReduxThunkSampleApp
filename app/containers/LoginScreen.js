@@ -8,10 +8,14 @@ import { callLoginWebService } from "../actions/LoginActions";
 
 const mapStateToProps = (state, ownProps) => {
   const {
+    networkState: {
+      isNetworkAvailable,
+    },
     loginState: { showUserLoading, loginData},
   } = state;
 
   return {
+    isNetworkAvailable,
     showUserLoading,
     loginData,
   }

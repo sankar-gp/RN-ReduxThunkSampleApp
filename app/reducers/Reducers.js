@@ -3,10 +3,12 @@
 import {combineReducers} from 'redux'
 import {networkState} from './NetworkReducer.js'
 import {loginState} from './LoginReducer.js'
+import {listViewState} from './ListViewReducer.js'
 
 const rootReducer = combineReducers({
 networkState,
 loginState,
+listViewState
 });
 
 export default rootReducer;
